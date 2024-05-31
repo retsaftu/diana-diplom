@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <section class="cart">
+        <h2>Корзина</h2>
+        <div class="cart-items">
+            <% if (products.length > 0) { %>
+                <% products.forEach(product => { %>
+                    <div class="cart-item">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
+                        <div class="cart-item-info">
+                            <p><strong><%= product.name %></strong></p>
+                            <p>Цена: <%= product.price %> руб.</p>
+                            <p>Количество: 1</p> 
+                        </div>
+                        <div class="cart-item-actions">
+                            <button>Удалить</button>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>Ваша корзина пуста</p>
+            <% } %>
+        </div>
+        <% if (products.length > 0) { %>
+            <a href="/checkout" class="checkout-button">Перейти к оплате</a>
+        <% } %>
+    </section>
+    <%- include('partials/footer') %>
+</body>
+</html>

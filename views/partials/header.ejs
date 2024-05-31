@@ -1,0 +1,19 @@
+<header>
+    <nav>
+        <div class="logo">
+            <a href="/">Главная</a>
+        </div>
+        <ul>
+            <li><a href="/products">Каталог</a></li>
+            <li><a href="/about">О нас</a></li>
+            <li><a href="/contact">Контакты</a></li>
+            <li><a href="/cart">Корзина</a></li>
+            <% if (!user) { %>
+                <li><a href="/auth/register">Регистрация</a></li>
+                <li><a href="/auth/login">Логин</a></li>
+            <% } else { %>
+                <li><a href="/auth/logout">Выйти</a></li>
+            <% } %>
+        </ul>
+    </nav>
+</header>

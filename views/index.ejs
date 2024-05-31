@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интернет-магазин одежды</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <section class="home">
+        <h1>Добро пожаловать в наш интернет-магазин одежды!</h1>
+        <div class="banner">
+            <img src="/images/banner.webp" alt="Баннер">
+        </div>
+        <h2>Популярные товары</h2>
+        <div class="popular-items">
+            <% products.forEach(product => { %>
+                <div class="item">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
+                    <p><strong><%= product.name %></strong></p>
+                    <p>Цена: <%= product.price %> тг.</p>
+                    <form action="/products/add-to-cart" method="POST">
+                        <input type="hidden" name="productId" value="<%= product._id %>">
+                        <button type="submit">Добавить в корзину</button>
+                    </form>
+                </div>
+            <% }) %>
+        </div>
+    </section>
+    <%- include('partials/footer') %>
+</body>
+</html>
